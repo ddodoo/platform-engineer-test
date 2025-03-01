@@ -11,6 +11,7 @@ spec:
     targetRevision: HEAD
     path: infra-k8s/k8s-apps/charts/nginx
     helm:
+      releaseName: nginx
       valueFiles:
         - values.yaml
   destination:

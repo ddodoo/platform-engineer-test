@@ -1,0 +1,32 @@
+# values.yaml
+replicaCount: 1
+
+image:
+  repository: my-registry.local:5000/my-service
+  tag: "v1.0.0"
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: "traefik"
+  host: "my-service.local"
+  path: /
+  pathType: Prefix
+
+argocd:
+  server: "argocd-server.argocd.svc.cluster.local"
+  port: "443"
+  username: "admin"
+  # Password will be taken from the secret
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
