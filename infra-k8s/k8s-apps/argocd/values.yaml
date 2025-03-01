@@ -1,0 +1,31 @@
+# values.yaml
+server:
+  extraArgs:
+    - --insecure
+  ingress:
+    enabled: true
+    hosts:
+      - argocd.local
+    annotations:
+      kubernetes.io/ingress.class: traefik
+
+controller:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+
+repoServer:
+  resources:
+    limits:
+      cpu: 300m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+applicationSet:
+  enabled: true
