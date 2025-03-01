@@ -1,24 +1,25 @@
-# templates/_helpers.tpl
+# templates/_helpers.tpl for both nginx and my-service charts
+
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "nginx.name" -}}
+{{- define "chart.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "nginx.chart" -}}
+{{- define "chart.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "nginx.labels" -}}
-helm.sh/chart: {{ include "nginx.chart" . }}
-{{ include "nginx.selectorLabels" . }}
+{{- define "chart.labels" -}}
+helm.sh/chart: {{ include "chart.chart" . }}
+{{ include "chart.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -28,7 +29,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "nginx.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "nginx.name" . }}
+{{- define "chart.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "chart.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
