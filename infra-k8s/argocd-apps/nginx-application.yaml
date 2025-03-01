@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/ddodoo/platform-engineer-test.git
     targetRevision: HEAD
-    path: infra-k8s/k8s-apps/nginx/charts/nginx
+    path: infra-k8s/k8s-apps/charts/nginx
     helm:
       valueFiles:
         - values.yaml
