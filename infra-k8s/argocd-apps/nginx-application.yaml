@@ -7,9 +7,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/platform-engineer-test.git
+    repoURL: https://github.com/ddodoo/platform-engineer-test.git
     targetRevision: HEAD
-    path: infra-k8s/k8s-apps/nginx
+    path: infra-k8s/k8s-apps/charts/nginx
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
