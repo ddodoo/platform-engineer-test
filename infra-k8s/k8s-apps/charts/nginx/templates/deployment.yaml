@@ -5,18 +5,15 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
-    {{- include "nginx.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}
-      {{- include "nginx.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: {{ .Release.Name }}
-        {{- include "nginx.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -27,4 +24,9 @@ spec:
               containerPort: 80
               protocol: TCP
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 64Mi

@@ -1,4 +1,3 @@
-
 # templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -6,9 +5,8 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
-    {{- include "nginx.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
@@ -16,4 +14,3 @@ spec:
       name: http
   selector:
     app: {{ .Release.Name }}
-    {{- include "nginx.selectorLabels" . | nindent 4 }}
