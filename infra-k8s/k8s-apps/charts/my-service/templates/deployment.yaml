@@ -35,7 +35,6 @@ spec:
                 secretKeyRef:
                   name: argocd-initial-admin-secret
                   key: password
-                  namespace: argocd
           resources:
             limits:
               cpu: 200m
