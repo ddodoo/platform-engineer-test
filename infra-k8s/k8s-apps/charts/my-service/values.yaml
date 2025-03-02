@@ -21,8 +21,11 @@ argocd:
   server: "argocd-server.argocd.svc.cluster.local"
   port: "443"
   username: "admin"
-  useExistingSecret: true
-  existingSecretValue: "VORPuxJQSTIplkcH" 
+  passwordFromSecret:
+    enabled: true
+    name: "argocd-initial-admin-secret"  # This is the existing secret
+    key: "password"
+    namespace: "argocd"
 
 resources:
   limits:
