@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: my-registry.local:5000/my-service
-  tag: "v1.0.0"
+  tag: "v1.1.0"
   pullPolicy: Always
 
 service:

@@ -21,7 +21,7 @@ logger.debug(f"Running with config: {settings}")
 
 # Get ArgoCD server details from environment variables
 ARGOCD_SERVER = os.getenv("ARGOCD_SERVER", "argocd-server.argocd.svc.cluster.local")
-ARGOCD_PORT = os.getenv("ARGOCD_PORT", "443")
+ARGOCD_PORT = os.getenv("ARGOCD_PORT", "80")
 SSL_VERIFY = os.getenv("SSL_VERIFY", "true").lower() == "true"
 
 # Models for ArgoCD API responses
@@ -76,7 +76,7 @@ async def get_application_status(token: str = Depends(verify_token)):
 
     async with httpx.AsyncClient(verify=SSL_VERIFY) as client:
         response = await client.get(
-            f"http://argocd-server.argocd.svc.cluster.local:443/api/v1/applications",
+            f"http://argocd-server.argocd.svc.cluster.local:80/api/v1/applications",
             headers={"Authorization": f"Bearer {token}"},
             timeout=10.0
         )
@@ -101,7 +101,7 @@ async def list_projects(token: str = Depends(verify_token)):
 
     async with httpx.AsyncClient(verify=SSL_VERIFY) as client:
         response = await client.get(
-            f"http://argocd-server.argocd.svc.cluster.local:443/api/v1/projects",
+            f"http://argocd-server.argocd.svc.cluster.local:80/api/v1/projects",
             headers={"Authorization": f"Bearer {token}"},
             timeout=10.0
         )
