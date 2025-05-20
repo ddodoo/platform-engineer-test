@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: my-registry.local:59462/my-service
+  repository: my-registry.local:5000/my-service
   tag: latest
   pullPolicy: IfNotPresent
 service:
