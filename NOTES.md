@@ -1,8 +1,8 @@
-# CREATE K3D CLUSTER
+### CREATE K3D CLUSTER
 `k3d cluster create -c k3d-config.yaml`
 
 
-# INSTALL ARGOCD
+### INSTALL ARGOCD
 
 ```
 helm repo add argo https://argoproj.github.io/argo-helm
@@ -14,7 +14,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 ```
 
 
-# RUN FASTAPI APPLICATION
+### RUN FASTAPI APPLICATION
 
 ```
 Navigate to your project directory
@@ -41,14 +41,14 @@ uvicorn my_service.main:app --host 0.0.0.0 --port 9000 --reload
 
 
 
-# TEST HEALTH CHECK
+### TEST HEALTH CHECK
 
 `curl http://127.0.0.1:9000/healthcheck`
 
 
 
 
-# TEST ARGOCD ENDPOINTS
+### TEST ARGOCD ENDPOINTS
 
 ```
 curl http://127.0.0.1:9000/api/v1/argocd/application_status | jq .
@@ -56,7 +56,7 @@ curl http://127.0.0.1:9000/api/v1/argocd/list_projects | jq .
 ```
 
 
-# UPDATE /ETC/HOSTS FILE
+### UPDATE /ETC/HOSTS FILE
 
 ```
 127.0.0.1 my-registry.local
@@ -65,7 +65,7 @@ curl http://127.0.0.1:9000/api/v1/argocd/list_projects | jq .
 
 ```
 
-# TEST KUBERNETES INGRESS
+### TEST KUBERNETES INGRESS
 
 ###  http://my-service.local/api/v1/argocd/application_status
 ```
@@ -103,14 +103,14 @@ curl http://my-service.local/api/v1/argocd/application_status | jq .
 }
 ```
 
-# MY-SERVICE CODE REPOSITORY UPDATES
+### MY-SERVICE CODE REPOSITORY UPDATES
 - my_service/api/v1/routers/argocd_querier_router.py
 - my_service/config/config.py
 - my_service/dependencies.py
 - my_service/models/models.py
 
 
-# CREATE .ENV IN ROOT DIRECTORY AND SET THE FOLLOWING ENVIRONMENT VARIABLES
+### CREATE .ENV IN ROOT DIRECTORY AND SET ENVIRONMENT VARIABLES
 
 ### .env file
 ```
