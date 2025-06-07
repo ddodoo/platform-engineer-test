@@ -5,13 +5,15 @@ metadata:
 servers: 1
 agents: 3
 registries:
-  create: 
+  create:
     name: my-registry
+    host: my-registry.local
+    hostPort: "5000"
   config: |
     mirrors:
-      "my-registry.local":
+      "my-registry.local:5000":
         endpoint:
-          - http://my-registry.local:5000
+          - http://my-registry:5000
 ports:
   - port: 8080:80
     nodeFilters:

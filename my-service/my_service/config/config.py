@@ -9,8 +9,8 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "DEBUG"
 
     # ArgoCD Config defaults
-    ARGOCD_SERVER: str = "localhost"
-    ARGOCD_PORT: str = "<ARGOCD_PORT>"
+    ARGOCD_SERVER: str = "argocd-server.argocd.svc.cluster.local"
+    ARGOCD_PORT: str = "80"
     ARGOCD_URL: str = f"{ARGOCD_SERVER}:{ARGOCD_PORT}"
     ARGOCD_PASSWORD: str = "<ARGOCD_ADMIN_USER_PASSWORD>"
     ARGOCD_USERNAME: str = "admin"                              # default argocd user
